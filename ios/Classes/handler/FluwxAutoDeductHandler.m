@@ -21,6 +21,7 @@
 }
 
 - (void)handleAutoDeductWithCall:(FlutterMethodCall *)call result:(FlutterResult)result {
+    /* 临时注释，以解决跟sharesdk低版本微信支付的冲突
     NSDictionary *params = call.arguments;
     NSMutableDictionary *paramsFromDart = [NSMutableDictionary dictionaryWithDictionary:call.arguments];
     [paramsFromDart removeObjectForKey:@"businessType"];
@@ -31,8 +32,7 @@
     [WXApi sendReq:req completion:^(BOOL done) {
         result(@(done));
     }];
-
-
+    */
 }
 
 - (NSString *)convertToJsonData:(NSDictionary *)dict {

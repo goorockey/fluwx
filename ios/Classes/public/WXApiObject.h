@@ -374,42 +374,42 @@ typedef void(^WXLogBolock)(NSString *log);
 
 
 
-#pragma mark - WXOpenBusinessWebViewReq
-/*! @brief 第三方通知微信启动内部浏览器，打开指定业务的网页
- *
- *
- */
-@interface WXOpenBusinessWebViewReq : BaseReq
+// #pragma mark - WXOpenBusinessWebViewReq
+// /*! @brief 第三方通知微信启动内部浏览器，打开指定业务的网页
+//  *
+//  *
+//  */
+// @interface WXOpenBusinessWebViewReq : BaseReq
 
-/** 网页业务类型
- * @attention
- */
-@property (nonatomic, assign) UInt32 businessType;
+// /** 网页业务类型
+//  * @attention
+//  */
+// @property (nonatomic, assign) UInt32 businessType;
 
-/** 网页业务参数
- * @attention
- */
-@property (nonatomic, strong, nullable) NSDictionary *queryInfoDic;
+// /** 网页业务参数
+//  * @attention
+//  */
+// @property (nonatomic, strong, nullable) NSDictionary *queryInfoDic;
 
-@end
+// @end
 
-#pragma mark - WXOpenBusinessWebViewResp
-/*! @brief 微信终端向第三方程序返回的WXOpenBusinessWebViewResp处理结果。
- *
- * 第三方程序向微信终端发送WXOpenBusinessWebViewReq后，微信发送回来的处理结果，该结果用WXOpenBusinessWebViewResp表示。
- */
-@interface WXOpenBusinessWebViewResp : BaseResp
-/** 第三方程序自定义简单数据，微信终端会回传给第三方程序处理
- * @attention 长度不能超过2k
- */
-@property (nonatomic, copy) NSString *result;
+// #pragma mark - WXOpenBusinessWebViewResp
+// /*! @brief 微信终端向第三方程序返回的WXOpenBusinessWebViewResp处理结果。
+//  *
+//  * 第三方程序向微信终端发送WXOpenBusinessWebViewReq后，微信发送回来的处理结果，该结果用WXOpenBusinessWebViewResp表示。
+//  */
+// @interface WXOpenBusinessWebViewResp : BaseResp
+// /** 第三方程序自定义简单数据，微信终端会回传给第三方程序处理
+//  * @attention 长度不能超过2k
+//  */
+// @property (nonatomic, copy) NSString *result;
 
-/** 网页业务类型
- * @attention
- */
-@property (nonatomic, assign) UInt32 businessType;
+// /** 网页业务类型
+//  * @attention
+//  */
+// @property (nonatomic, assign) UInt32 businessType;
 
-@end
+// @end
 
 
 #pragma mark - OpenRankListReq
