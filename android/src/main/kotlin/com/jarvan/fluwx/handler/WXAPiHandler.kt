@@ -55,13 +55,17 @@ object WXAPiHandler {
         }
 
 
-        val api = WXAPIFactory.createWXAPI(registrar!!.context().applicationContext, appId)
+        val api = createWxApi(appId)
         val registered = api.registerApp(appId)
         wxApi = api
         result.success(mapOf(
                 WechatPluginKeys.PLATFORM to WechatPluginKeys.ANDROID,
                 WechatPluginKeys.RESULT to registered
         ))
+    }
+
+    fun createWxApi(appId: String): IWXAPI {
+        return WXAPIFactory.createWXAPI(registrar!!.context().applicationContext, appId)
     }
 
     fun checkWeChatInstallation(result: MethodChannel.Result) {
