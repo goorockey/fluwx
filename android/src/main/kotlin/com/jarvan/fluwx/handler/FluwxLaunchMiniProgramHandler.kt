@@ -10,6 +10,8 @@ internal class FluwxLaunchMiniProgramHandler {
 
     fun launchMiniProgram(call: MethodCall, result: MethodChannel.Result) {
         val req = WXLaunchMiniProgram.Req()
+        val appId = call.argument<String?>("appId") ?: ""
+
         req.userName = call.argument<String?>("userName") // 填小程序原始id
         req.path = call.argument<String?>("path") ?: "" //拉起小程序页面的可带参路径，不填默认拉起小程序首页
         val type = call.argument("miniProgramType") ?: 0
@@ -18,7 +20,9 @@ internal class FluwxLaunchMiniProgramHandler {
             2 -> WXLaunchMiniProgram.Req.MINIPROGRAM_TYPE_PREVIEW
             else -> WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE
         }// 可选打开 开发版，体验版和正式版
-        val done = WXAPiHandler.wxApi?.sendReq(req)
+
+        val wxApi = if (appId.isNullOrBlank()) WXAPiHandler.wxApi else WXAPiHandler.createWxApi(appId)
+        val done = wxApi?.sendReq(req)
         result.success(mapOf(
                 WechatPluginKeys.PLATFORM to WechatPluginKeys.ANDROID,
                 WechatPluginKeys.RESULT to done

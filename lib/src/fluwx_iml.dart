@@ -378,11 +378,13 @@ Future stopWeChatAuthByQRCode() async {
 @Deprecated("use launchWeChatMiniProgram instead")
 Future launchMiniProgram(
     {@required String username,
+    String appId,
     String path,
     WXMiniProgramType miniProgramType = WXMiniProgramType.RELEASE}) async {
   assert(username != null && username.trim().isNotEmpty);
   return await _channel.invokeMethod("launchMiniProgram", {
     "userName": username,
+    "appId": appId,
     "path": path,
     "miniProgramType": miniProgramTypeToInt(miniProgramType)
   });
